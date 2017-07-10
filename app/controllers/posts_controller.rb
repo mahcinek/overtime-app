@@ -6,13 +6,14 @@ class PostsController < ApplicationController
 	end
 
 	def edit
-
+		authorize @post
 	end
 	def destroy
 		@post.delete
 		redirect_to posts_path, notice: 'Your post was deleted successfully'
 	end
 	def update
+		authorize @post
 		if @post.update(post_params)
 		redirect_to @post, notice: 'Your post was updated successfully'
 	else
@@ -41,7 +42,7 @@ class PostsController < ApplicationController
 	private
 
 	  def post_params
-	  	params.require(:post).permit(:date, :rationale)
+	  	params.require(:post).permit(:date, :rationale, :status)
 	  end
 
 	  def set_post

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'navigate' do
   before do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:admin_user)
     user=@user
     login_as(user, :scope => :user)
   end
