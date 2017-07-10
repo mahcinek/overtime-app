@@ -27,9 +27,9 @@ describe 'navigate' do
     end
     it 'has a scope so post creators can see their posts'do
     sam=User.create(first_name: 'Sam', last_name: 'Guplix', email: 'sam@test.com', password: "asdfasdf", password_confirmation: 'asdfasdf')
-    post1 = Post.create(date: Date.today, rationale: "11111", user_id: @user.id)
-    post2 = Post.create(date: Date.today, rationale: "2222222", user_id: @user.id)
-      post_from_other_user=Post.create(date: Date.today, rationale: "SamSamSam", user_id: sam.id)
+    post1 = Post.create(date: Date.today, rationale: "11111", user_id: @user.id, overtime_request: 4.5)
+    post2 = Post.create(date: Date.today, rationale: "2222222", user_id: @user.id, overtime_request: 4.5)
+      post_from_other_user=Post.create(date: Date.today, rationale: "SamSamSam", user_id: sam.id, overtime_request: 2.5)
       visit posts_path
       expect(page).to_not have_content(/SamSamSam/)
     end
@@ -82,7 +82,7 @@ end
   describe 'edit' do
 before do
   @user = FactoryGirl.create(:admin_user)
-  @post=Post.create(date: Date.today, rationale: "blah blah", user_id: @user.id)
+  @post=Post.create(date: Date.today, rationale: "blah blah", user_id: @user.id, overtime_request: 0.5)
 end
 
     it 'can be reached by clicking edit on index page' do
