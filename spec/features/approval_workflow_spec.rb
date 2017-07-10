@@ -18,12 +18,12 @@ describe 'edit' do
     click_on 'Save'
     expect(@post.reload.status).to eq('approved')
   end
-  xit 'cannot be edited by non admin' do
+  it 'cannot be edited by non admin' do
     logout(:user)
     user=FactoryGirl.create(:user)
     login_as(user, :scope => :user)
     visit edit_post_path(@post)
-    expect(current_page).to eq(root_path)
+    expect(current_path).to eq(posts_path)
   end
 end
 end

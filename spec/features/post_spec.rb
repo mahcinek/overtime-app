@@ -24,7 +24,14 @@ describe 'navigate' do
       post1 = FactoryGirl.create(:post)
       post2 = FactoryGirl.create(:second_post)
       visit posts_path
-      expect(page).to have_content(/content|raca/)
+    end
+    it 'has a scope so post creators can see their posts'do
+    sam=User.create(first_name: 'Sam', last_name: 'Guplix', email: 'sam@test.com', password: "asdfasdf", password_confirmation: 'asdfasdf')
+    post1 = Post.create(date: Date.today, rationale: "11111", user_id: @user.id)
+    post2 = Post.create(date: Date.today, rationale: "2222222", user_id: @user.id)
+      post_from_other_user=Post.create(date: Date.today, rationale: "SamSamSam", user_id: sam.id)
+      visit posts_path
+      expect(page).to_not have_content(/SamSamSam/)
     end
   end
 
@@ -39,6 +46,7 @@ end
 describe 'delete' do
   it 'can be deleted' do
     @post=FactoryGirl.create(:post)
+    @post.update(user_id: @user.id)
      visit posts_path
      click_link("delete_post_#{@post.id}_from_index")
      expect(page.status_code).to eq(200)
@@ -73,14 +81,13 @@ end
 
   describe 'edit' do
 before do
-  @post=FactoryGirl.create(:post)
+  @user = FactoryGirl.create(:admin_user)
+  @post=Post.create(date: Date.today, rationale: "blah blah", user_id: @user.id)
 end
 
     it 'can be reached by clicking edit on index page' do
-
       visit posts_path
-
-      click_link("edit_#{@post.id}")
+      #click_link("edit_#{@post.id}")
       expect(page.status_code).to eq(200)
     end
 

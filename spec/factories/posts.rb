@@ -10,4 +10,9 @@ FactoryGirl.define do
     rationale "some more content rac"
     user
   end
+  factory :post_from_other_user, class: "Post" do
+    date Date.yesterday
+    rationale "some more content rac"
+    userSam
+  end
 end
