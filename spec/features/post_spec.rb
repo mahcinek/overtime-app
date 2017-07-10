@@ -26,7 +26,7 @@ describe 'navigate' do
       visit posts_path
     end
     it 'has a scope so post creators can see their posts'do
-    sam=User.create(first_name: 'Sam', last_name: 'Guplix', email: 'sam@test.com', password: "asdfasdf", password_confirmation: 'asdfasdf')
+    sam=User.create(first_name: 'Sam', last_name: 'Guplix', email: 'sam@test.com', password: "asdfasdf", password_confirmation: 'asdfasdf', phone:"697294429")
     post1 = Post.create(date: Date.today, rationale: "11111", user_id: @user.id, overtime_request: 4.5)
     post2 = Post.create(date: Date.today, rationale: "2222222", user_id: @user.id, overtime_request: 4.5)
       post_from_other_user=Post.create(date: Date.today, rationale: "SamSamSam", user_id: sam.id, overtime_request: 2.5)

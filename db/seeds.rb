@@ -1,5 +1,15 @@
-@user=User.create(email: "test@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Jon", last_name: "Snow")
-@admin=AdminUser.create(email: "admin@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Admin", last_name: "adm")
+@user=User.create(email: "test@test.com",
+                  password: "asdfasdf",
+                  password_confirmation: "asdfasdf",
+                  first_name: "Jon",
+                  last_name: "Snow",
+                  phone:"697294429")
+@admin=AdminUser.create(email: "admin@test.com",
+                        password: "asdfasdf",
+                        password_confirmation: "asdfasdf",
+                        first_name: "Admin",
+                        last_name: "adm",
+                        phone:"697294429")
 puts '2 users created'
 
 10.times do |post|

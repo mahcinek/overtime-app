@@ -9,6 +9,7 @@ sequence :email do |n|
     email {generate :email}
     password "asdfasdf"
     password_confirmation "asdfasdf"
+    phone "697294429"
   end
 
   factory :admin_user, class: "AdminUser" do
@@ -17,5 +18,6 @@ sequence :email do |n|
     email {generate :email}
     password "asdfasdf"
     password_confirmation "asdfasdf"
+    phone "697294429"
   end
 end
