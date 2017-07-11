@@ -12,6 +12,11 @@
                         phone:"697294429")
 puts '2 users created'
 
+
+  AuditLog.create!(start_date: Date.today, user_id: @user.id, status: 0, start_date:(Date.today - 6.days))
+  AuditLog.create!(start_date: Date.today, user_id: @user.id, status: 0, start_date:(Date.today - 13.days))
+  AuditLog.create!(start_date: Date.today, user_id: @user.id, status: 0, start_date:(Date.today - 20.days))
+
 10.times do |post|
   Post.create!(date: Date.today, rationale: "#{post}, Contrary to popular belief, Lorem
   Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,
@@ -22,20 +27,10 @@ puts '2 users created'
     during the Renaissance. The first line of Lorem Ipsum, comes from a line in section 1.10.32.", user_id: @user.id, status: 0, overtime_request: 2.5)
 end
 
-  AuditLog.create!(start_date: Date.today, user_id: @user.id, status: 0, start_date:(Date.today - 6.days))
-  AuditLog.create!(start_date: Date.today, user_id: @user.id, status: 0, start_date:(Date.today - 13.days))
-  AuditLog.create!(start_date: Date.today, user_id: @user.id, status: 0, start_date:(Date.today - 20.days))
 
 
 puts "3 audit logs"
-10.times do |post|
-  Post.create!(date: Date.today, rationale: "#{post}, rationale content", user_id: @user.id, status: 1, overtime_request: 1.5)
+100.times do |post|
+	Post.create!(date: Date.today, rationale: "#{post} rationale content Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", user_id: @user.id, overtime_request: 2.5)
 end
-10.times do |post|
-  Post.create!(date: Date.today, rationale: "#{post}, rationale content", user_id: @user.id, status: 2, overtime_request: 4.5)
-end
-10.times do |post|
-  Post.create!(date: Date.today, rationale: "#{post}, rationale admin content", user_id: @admin.id, status: 0, overtime_request: 0.5)
-end
-
 puts "100 posts created"
