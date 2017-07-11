@@ -25,7 +25,7 @@ describe 'validatons' do
     expect(@audit_log).to_not be_valid
   end
   it 'it should have a start date equal to 6 days prior' do
-  new_audit_log=AuditLog.create( user_id: User.last.id, status: 0)
+  new_audit_log=AuditLog.create(user_id: User.last.id, status: 0)
   expect(new_audit_log.start_date).to eq((Date.today - 6.days))
   end
 end
